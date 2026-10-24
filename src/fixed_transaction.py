@@ -19,7 +19,7 @@ def process_transaction(user_id, amount, db_connection):
     return status
 
 
-if name == "main":
+if __name__ == "__main__":
     database = {1: 1000}
     result = process_transaction(1, 250, database)
     print("Статус:", result)
