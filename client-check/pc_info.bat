@@ -1,143 +1,85 @@
 @echo off
 chcp 65001 > nul
+setlocal
 
-REM =================================================================
-REM Тема: Инструментальные средства ревьюирования, проверки на стороне клиента.
-REM Выполнил: Фамилия
-REM Дата: 26.10.2026
-REM =================================================================
+REM Практическая работа: диагностика клиентского компьютера
+REM Выполнил: Андрей Рязанцев
+REM Дата: 22.11.2026
 
-REM Установка пути к файлу отчета в папке скрипта
 set "REPORT_FILE=%~dp0pc_report.txt"
+set "OS_NAME=не удалось получить данные"
+set "OS_VERSION=не удалось получить данные"
+set "CPU_NAME=не удалось получить данные"
+set "TOTAL_GB=не удалось получить данные"
+set "FREE_GB=не удалось получить данные"
+set "DISK_SIZE_GB=не удалось получить данные"
+set "DISK_FREE_GB=не удалось получить данные"
 
-REM Очищаем файл отчета, если он существовал, и пишем заголовок
-echo ========================================== > "%REPORT_FILE%"
-echo   ОТЧЕТ О ДИАГНОСТИКЕ КЛИЕНТСКОГО КОМПЬЮТЕРА >> "%REPORT_FILE%"
-echo ========================================== >> "%REPORT_FILE%"
-echo. >> "%REPORT_FILE%"
+REM Получаем сведения об операционной системе и процессоре
+for /f "delims=" %%A in ('powershell -NoProfile -Command "(Get-CimInstance Win32_OperatingSystem).Caption" 2^>nul') do set "OS_NAME=%%A"
+for /f "delims=" %%A in ('powershell -NoProfile -Command "(Get-CimInstance Win32_OperatingSystem).Version" 2^>nul') do set "OS_VERSION=%%A"
+for /f "delims=" %%A in ('powershell -NoProfile -Command "(Get-CimInstance Win32_Processor | Select-Object -First 1 -ExpandProperty Name)" 2^>nul') do set "CPU_NAME=%%A"
 
-REM =================================================================
-REM БЛОК 2: Вывод заголовка в консоль
-REM =================================================================
-cls
-echo ==========================================
-echo       ДИАГНОСТИКА КОМПЬЮТЕРА
-echo ==========================================
+REM Получаем общий и свободный объём оперативной памяти в ГБ
+for /f "delims=" %%A in ('powershell -NoProfile -Command "[math]::Floor((Get-CimInstance Win32_OperatingSystem).TotalVisibleMemorySize/1MB)" 2^>nul') do set "TOTAL_GB=%%A"
+for /f "delims=" %%A in ('powershell -NoProfile -Command "[math]::Floor((Get-CimInstance Win32_OperatingSystem).FreePhysicalMemory/1MB)" 2^>nul') do set "FREE_GB=%%A"
+
+REM Получаем размер диска C и свободное место в ГБ
+for /f "delims=" %%A in ('powershell -NoProfile -Command "[math]::Floor(((Get-PSDrive -Name C).Used+(Get-PSDrive -Name C).Free)/1GB)" 2^>nul') do set "DISK_SIZE_GB=%%A"
+for /f "delims=" %%A in ('powershell -NoProfile -Command "[math]::Floor((Get-PSDrive -Name C).Free/1GB)" 2^>nul') do set "DISK_FREE_GB=%%A"
+
+REM Создаём новый отчёт рядом со скриптом
+> "%REPORT_FILE%" echo Диагностика компьютера
+>> "%REPORT_FILE%" echo ========================================
+
+echo Диагностика компьютера
+echo ========================================
 echo.
 
-REM =================================================================
-REM БЛОК 3: Сведения об операционной системе
-REM =================================================================
-echo [Операционная система]
-echo [Операционная система] >> "%REPORT_FILE%"
-
-for /f "tokens=2 delims==" %%i in ('wmic os get Caption /value 2^>nul') do (
-    if not "%%i"=="" (
-        echo Название: %%i
-        echo Название: %%i >> "%REPORT_FILE%"
-    )
-)
-for /f "tokens=2 delims==" %%i in ('wmic os get Version /value 2^>nul') do (
-    if not "%%i"=="" (
-        echo Версия:   %%i
-        echo Версия:   %%i >> "%REPORT_FILE%"
-    )
-)
-echo.
-echo. >> "%REPORT_FILE%"
-
-REM =================================================================
-REM БЛОК 4: Сведения об обработчике (Процессор)
-REM =================================================================
-echo [Процессор]
-echo [Процессор] >> "%REPORT_FILE%"
-
-for /f "tokens=2 delims==" %%i in ('wmic cpu get Name /value 2^>nul') do (
-    if not "%%i"=="" (
-        echo Модель: %%i
-        echo Модель: %%i >> "%REPORT_FILE%"
-    )
-)
+echo Операционная система
+echo Название: %OS_NAME%
+echo Версия: %OS_VERSION%
+echo Операционная система >> "%REPORT_FILE%"
+echo Название: %OS_NAME% >> "%REPORT_FILE%"
+echo Версия: %OS_VERSION% >> "%REPORT_FILE%"
 echo.
 echo. >> "%REPORT_FILE%"
 
-REM =================================================================
-REM БЛОК 5: Сведения об оперативной памяти
-REM =================================================================
-echo [Оперативная память]
-echo [Оперативная память] >> "%REPORT_FILE%"
-
-for /f "tokens=2 delims==" %%i in ('wmic os get TotalVisibleMemorySize /value 2^>nul') do (
-    set "total_kb=%%i"
-)
-for /f "tokens=2 delims==" %%i in ('wmic os get FreePhysicalMemory /value 2^>nul') do (
-    set "free_kb=%%i"
-)
-
-REM Перевод из КБ в ГБ (деление на 1048576)
-set /a total_gb=%total_kb% / 1048576
-set /a free_gb=%free_kb% / 1048576
-
-echo Всего памяти:    %total_gb% ГБ
-echo Свободно памяти: %free_gb% ГБ
-echo Всего памяти:    %total_gb% ГБ >> "%REPORT_FILE%"
-echo Свободно памяти: %free_gb% ГБ >> "%REPORT_FILE%"
+echo Процессор
+echo Модель: %CPU_NAME%
+echo Процессор >> "%REPORT_FILE%"
+echo Модель: %CPU_NAME% >> "%REPORT_FILE%"
 echo.
 echo. >> "%REPORT_FILE%"
 
-REM =================================================================
-REM БЛОК 6: Свободное место на диске C
-REM =================================================================
-echo [Диск C]
-echo [Диск C] >> "%REPORT_FILE%"
-
-for /f "tokens=2 delims==" %%i in ('wmic logicaldisk where "DeviceID='C:'" get Size /value 2^>nul') do (
-    set "disk_size_b=%%i"
-)
-for /f "tokens=2 delims==" %%i in ('wmic logicaldisk where "DeviceID='C:'" get FreeSpace /value 2^>nul') do (
-    set "disk_free_b=%%i"
-)
-
-REM Перевод из Байт в ГБ (разбиваем число, так как 32-битный cmd не переваривает числа больше 2 млрд напрямую)
-REM Используем обходной путь деления больших чисел через отсечение последних 6 знаков (деление на 1000000)
-set "size_trimmed=%disk_size_b:~0,-6%"
-set "free_trimmed=%disk_free_b:~0,-6%"
-set /a disk_size_gb=%size_trimmed% / 1073
-set /a disk_free_gb=%free_trimmed% / 1073
-
-echo Общий размер диска C: %disk_size_gb% ГБ
-echo Свободно на диске C:  %disk_free_gb% ГБ
-echo Общий размер диска C: %disk_size_gb% ГБ >> "%REPORT_FILE%"
-echo Свободно на диске C:  %disk_free_gb% ГБ >> "%REPORT_FILE%"
+echo Оперативная память
+echo Всего памяти: %TOTAL_GB% ГБ
+echo Свободно памяти: %FREE_GB% ГБ
+echo Оперативная память >> "%REPORT_FILE%"
+echo Всего памяти: %TOTAL_GB% ГБ >> "%REPORT_FILE%"
+echo Свободно памяти: %FREE_GB% ГБ >> "%REPORT_FILE%"
 echo.
 echo. >> "%REPORT_FILE%"
 
-REM =================================================================
-REM БЛОК 7: Список установленных программ (Через реестр)
-REM =================================================================
-echo [Установленные программы]
-echo [Установленные программы] >> "%REPORT_FILE%"
-
-REM Поиск в 64-битном разделе реестра
-for /f "tokens=2,*" %%a in ('reg query "HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall" /s /f DisplayName 2^>nul ^| findstr "DisplayName"') do (
-    echo %%b
-    echo %%b >> "%REPORT_FILE%"
-)
-
-REM Поиск в 32-битном разделе реестра (WOW6432Node)
-for /f "tokens=2,*" %%a in ('reg query "HKLM\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall" /s /f DisplayName 2^>nul ^| findstr "DisplayName"') do (
-    echo %%b
-    echo %%b >> "%REPORT_FILE%"
-)
-
+echo Диск C
+echo Общий размер: %DISK_SIZE_GB% ГБ
+echo Свободно: %DISK_FREE_GB% ГБ
+echo Диск C >> "%REPORT_FILE%"
+echo Общий размер: %DISK_SIZE_GB% ГБ >> "%REPORT_FILE%"
+echo Свободно: %DISK_FREE_GB% ГБ >> "%REPORT_FILE%"
 echo.
 echo. >> "%REPORT_FILE%"
-echo ==========================================
-echo Отчёт сохранён в файл pc_report.txt
-echo ==========================================
-echo.
 
-REM =================================================================
-REM БЛОК 10: Фиксация окна
-REM =================================================================
+REM Читаем названия программ из 64- и 32-битных разделов реестра
+echo Установленные программы
+echo Установленные программы >> "%REPORT_FILE%"
+
+for /f "tokens=1,2,*" %%A in ('reg query "HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall" /s /v DisplayName 2^>nul ^| findstr /i "DisplayName"') do if not "%%C"=="" (echo %%C&echo %%C >> "%REPORT_FILE%")
+
+for /f "tokens=1,2,*" %%A in ('reg query "HKLM\Software\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall" /s /v DisplayName 2^>nul ^| findstr /i "DisplayName"') do if not "%%C"=="" (echo %%C&echo %%C >> "%REPORT_FILE%")
+
+echo.
+echo Отчёт сохранён в файле pc_report.txt
+echo Отчёт сохранён в файле pc_report.txt >> "%REPORT_FILE%"
 pause
+endlocal
