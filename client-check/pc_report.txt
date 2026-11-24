@@ -1,105 +1,138 @@
-Диагностика компьютера
-========================================
-Операционная система 
-Название: Майкрософт Windows 11 Домашняя 
-Версия: 10.0.26300 
- 
-Процессор 
-Модель: AMD Ryzen 5 7500F 6-Core Processor              
- 
-Оперативная память 
-Всего памяти: 31 ГБ 
-Свободно памяти: 16 ГБ 
- 
-Диск C 
-Общий размер: 1862 ГБ 
-Свободно: 4 ГБ 
- 
-Установленные программы 
-draw.io 31.7.0 
-7-Zip 26.01 (x64) 
-AIMP 
-CPUID CPU-Z 2.18 
-Git 
-Microsoft Office Home and Student 2021 - en-us.proof 
-Microsoft Office для дома и учебы 2021 - ru-ru 
-Microsoft Office для дома и учебы 2021 - ru-ru.proof 
-PostgreSQL 18  
-Terraria 
-ULTRAKILL 
-tModLoader 
-Beat Banger 
-OBS Studio 
-Don't Starve Together 
-R.E.P.O. 
-Bongo Cat 
-AnimaEngine 
-Твоя мама 
-Mouse X 
-Wallpaper Engine 
-Happy Endings 
-No Socks RPG 
-Fart Together Demo 
-Deep Rock Galactic 
-Soundpad 
-Risk of Rain 2 
-VLC media player 
-Microsoft Visual C++ 2013 x64 Additional Runtime - 12.0.40664 
-Foxit PDF Reader 
-Microsoft Visual C++ 2010  x64 Redistributable - 10.0.40219 
-Microsoft Windows Application Compatibility Fix Database 
-Happ - Proxy Utility 4.1.2(603) 
-Microsoft Visual C++ 2013 x64 Minimum Runtime - 12.0.40664 
-Microsoft Visual C++ 2008 Redistributable - x64 9.0.30729.6161 
-Microsoft Visual C++ 2022 X64 Additional Runtime - 14.51.36247 
-PowerToys (Preview) 
-Office 16 Click-to-Run Extensibility Component 
-Office 16 Click-to-Run Localization Component 
-Microsoft Visual C++ 2022 X64 Minimum Runtime - 14.51.36247 
-NVIDIA Графический драйвер 616.64 
-NVIDIA App 11.0.9.251 
-NVIDIA MessageBus 3 for NvApp 
-NVIDIA Backend 
-NVIDIA App driver settings 
-NVIDIA Системное программное обеспечение PhysX 9.26.0703 
-NVIDIA FrameView SDK 1.9.12728.38614306 
-NVIDIA Аудиодрайвер HD 1.4.6.3 
-NVIDIA Install Application 
-NVIDIA Container 
-NVIDIA AIUser Container 
-NVIDIA LocalSystem Container 
-NVIDIA Session Container 
-NVIDIA User Container 
-NVIDIA NvDLISR 
-NVIDIA Watchdog Plugin for NvContainer 
-NVIDIA Telemetry Client 
-NVIDIA ShadowPlay 11.0.9.500 
-NVIDIA Virtual Audio 4.92.0.0 
-INCY 
-FastStone Image Viewer 8.3 
-Google Chrome 
-Kaspersky 
-K-Lite Mega Codec Pack 19.7.0 
-Среда выполнения Microsoft Edge WebView2 Runtime 
-Steam 
-TLauncher 
-Unchecky v1.2 
-Microsoft Visual C++ 2013 Redistributable (x64) - 12.0.40664 
-Microsoft Visual C++ 2013 Redistributable (x64) - 12.0.30501 
-Microsoft Visual C++ v14 Redistributable (x64) - 14.51.36247 
-Kaspersky 
-Avast Update Helper 
-Radmin VPN 2.1.2 
-Microsoft Visual C++ 2022 X86 Minimum Runtime - 14.51.36247 
-Microsoft Visual C++ 2022 X86 Additional Runtime - 14.51.36247 
-Microsoft Visual C++ 2013 x86 Minimum Runtime - 12.0.40664 
-Microsoft Visual C++ 2005 Redistributable 
-Microsoft Visual C++ v14 Redistributable (x86) - 14.51.36247 
-Microsoft Visual C++ 2008 Redistributable - x86 9.0.30729.6161 
-Microsoft Visual C++ 2013 Redistributable (x86) - 12.0.40664 
-Microsoft Visual C++ 2013 x86 Additional Runtime - 12.0.40664 
-Microsoft XNA Framework Redistributable 4.0 Refresh 
-Microsoft Visual C++ 2010  x86 Redistributable - 10.0.40219 
-Microsoft Visual C++ 2013 Redistributable (x86) - 12.0.30501 
-Microsoft Visual C++ 2008 Redistributable - x86 9.0.21022 
-Отчёт сохранён в файле pc_report.txt 
+АУДИТ КЛИЕНТСКОГО КОМПЬЮТЕРА
+Дата и время проверки: 2026-11-25 00:43:33
+==========================================
+
+
+СВЕДЕНИЯ О КОМПЬЮТЕРЕ
+Операционная система: Майкрософт Windows 11 Домашняя
+Версия: 10.0.26300
+Процессор: AMD Ryzen 5 7500F 6-Core Processor             
+Всего оперативной памяти: 31 ГБ
+Свободно оперативной памяти: 14 ГБ
+Размер диска C: не удалось получить данные ГБ
+Свободно на диске C: не удалось получить данные ГБ
+
+СПИСОК УСТАНОВЛЕННЫХ ПРОГРАММ
+  ﻿7-Zip 26.01 (x64)
+  AIMP
+  AnimaEngine
+  Avast Update Helper
+  Beat Banger
+  Bongo Cat
+  CPUID CPU-Z 2.18
+  Deep Rock Galactic
+  draw.io 31.7.0
+  Fart Together Demo
+  FastStone Image Viewer 8.3
+  Foxit PDF Reader
+  Git
+  Google Chrome
+  Happ - Proxy Utility 4.1.2(603)
+  Happy Endings
+  INCY
+  Kaspersky
+  K-Lite Mega Codec Pack 19.7.0
+  Microsoft Office Home and Student 2021 - en-us.proof
+  Microsoft Office для дома и учебы 2021 - ru-ru
+  Microsoft Office для дома и учебы 2021 - ru-ru.proof
+  Microsoft Visual C++ 2005 Redistributable
+  Microsoft Visual C++ 2008 Redistributable - x64 9.0.30729.6161
+  Microsoft Visual C++ 2008 Redistributable - x86 9.0.21022
+  Microsoft Visual C++ 2008 Redistributable - x86 9.0.30729.6161
+  Microsoft Visual C++ 2010  x64 Redistributable - 10.0.40219
+  Microsoft Visual C++ 2010  x86 Redistributable - 10.0.40219
+  Microsoft Visual C++ 2013 Redistributable (x64) - 12.0.30501
+  Microsoft Visual C++ 2013 Redistributable (x64) - 12.0.40664
+  Microsoft Visual C++ 2013 Redistributable (x86) - 12.0.30501
+  Microsoft Visual C++ 2013 Redistributable (x86) - 12.0.40664
+  Microsoft Visual C++ 2013 x64 Additional Runtime - 12.0.40664
+  Microsoft Visual C++ 2013 x64 Minimum Runtime - 12.0.40664
+  Microsoft Visual C++ 2013 x86 Additional Runtime - 12.0.40664
+  Microsoft Visual C++ 2013 x86 Minimum Runtime - 12.0.40664
+  Microsoft Visual C++ 2022 X64 Additional Runtime - 14.51.36247
+  Microsoft Visual C++ 2022 X64 Minimum Runtime - 14.51.36247
+  Microsoft Visual C++ 2022 X86 Additional Runtime - 14.51.36247
+  Microsoft Visual C++ 2022 X86 Minimum Runtime - 14.51.36247
+  Microsoft Visual C++ v14 Redistributable (x64) - 14.51.36247
+  Microsoft Visual C++ v14 Redistributable (x86) - 14.51.36247
+  Microsoft Windows Application Compatibility Fix Database
+  Microsoft XNA Framework Redistributable 4.0 Refresh
+  Mouse X
+  No Socks RPG
+  NVIDIA AIUser Container
+  NVIDIA App 11.0.9.251
+  NVIDIA App driver settings
+  NVIDIA Backend
+  NVIDIA Container
+  NVIDIA FrameView SDK 1.9.12728.38614306
+  NVIDIA Install Application
+  NVIDIA LocalSystem Container
+  NVIDIA MessageBus 3 for NvApp
+  NVIDIA NvDLISR
+  NVIDIA Session Container
+  NVIDIA ShadowPlay 11.0.9.500
+  NVIDIA Telemetry Client
+  NVIDIA User Container
+  NVIDIA Virtual Audio 4.92.0.0
+  NVIDIA Watchdog Plugin for NvContainer
+  NVIDIA Аудиодрайвер HD 1.4.6.3
+  NVIDIA Графический драйвер 616.64
+  NVIDIA Системное программное обеспечение PhysX 9.26.0703
+  OBS Studio
+  Office 16 Click-to-Run Extensibility Component
+  Office 16 Click-to-Run Localization Component
+  PostgreSQL 18 
+  PowerToys (Preview)
+  R.E.P.O.
+  Radmin VPN 2.1.2
+  Risk of Rain 2
+  Soundpad
+  Steam
+  Terraria
+  TLauncher
+  tModLoader
+  ULTRAKILL
+  Unchecky v1.2
+  VLC media player
+  Wallpaper Engine
+  Среда выполнения Microsoft Edge WebView2 Runtime
+  Твоя мама
+
+ПРОВЕРКА БАЗОВОГО ОФИСНОГО ПО
+------------------------------------------
+Офисный пакет: требование выполнено. Найдено:
+  Microsoft Office Home and Student 2021 - en-us.proof
+  Microsoft Office для дома и учебы 2021 - ru-ru
+  Microsoft Office для дома и учебы 2021 - ru-ru.proof
+  Office 16 Click-to-Run Extensibility Component
+  Office 16 Click-to-Run Localization Component
+Браузер: найден. Обратите внимание, что Edge может быть компонентом Windows. Найдено:
+  Google Chrome
+  Среда выполнения Microsoft Edge WebView2 Runtime
+Программа для PDF: требование выполнено. Найдено:
+  Foxit PDF Reader
+Архиватор: требование выполнено. Найдено:
+  ﻿7-Zip 26.01 (x64)
+Антивирус: найден в списке программ. Рекомендуется дополнительно проверить, что защита включена. Найдено:
+  Kaspersky
+
+ПРОВЕРКА ПРОГРАММ, НЕ ОТНОСЯЩИХСЯ К БАЗОВЫМ ОФИСНЫМ ЗАДАЧАМ
+Результаты являются рекомендацией к проверке, а не указанием к удалению.
+Решение принимает администратор с учётом потребностей организации.
+------------------------------------------
+Игры и игровые платформы: найдены программы для проверки:
+  Steam
+Торрент-клиенты и файлообменные программы: совпадений не обнаружено.
+Мессенджеры и приложения для общения: совпадений не обнаружено.
+Развлекательные программы и оформление: найдены программы для проверки:
+  OBS Studio
+  Soundpad
+  VLC media player
+  Wallpaper Engine
+
+ИТОГ ПРОВЕРКИ
+Проверено категорий базового ПО: 5
+Рекомендаций для проверки: 2
+Список обнаруженных программ: 84
+Полный путь к отчёту: C:\Users\1\Downloads\pc_report.txt
+Временные файлы будут удалены.
